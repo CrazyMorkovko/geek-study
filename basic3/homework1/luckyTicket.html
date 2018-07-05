@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  "use strict";
+
+  let number, numbers, sum1 = 0, sum2 = 0;
+
+  number = prompt("Введите номер билета: ");
+
+  numbers = number.split('');
+
+  if (numbers.length % 2 === 0 && /^[0-9]+$/.test(number)) {
+    for (let i = 0; i < numbers.length; i++) {
+      if (i < numbers.length / 2) {
+        sum1 += +numbers[i];
+      } else {
+        sum2 += +numbers[i];
+      }
+    }
+
+    /*
+      // Альтернативный вариант, код выше поменять на код из комментария
+      let number, number1, number2, number3, number4, number5, number6, sum1, sum2;
+
+      number = +prompt("Введите номер билета: ");
+
+      number1 = number % 10;
+      number2 = (Math.floor(number / 10) % 10);
+      number3 = (Math.floor(number / 100) % 10);
+      number4 = (Math.floor(number / 1000) % 10);
+      number5 = (Math.floor(number / 10000) % 10);
+      number6 = (Math.floor(number / 100000) % 10);
+      sum1 = number1 + number2 + number3;
+      sum2 = number4 + number5 + number6;
+     */
+
+    if (sum1 === sum2) {
+      alert('У вас счастливый билетик! Поздравляем!')
+    } else {
+      alert('У вас обычный билетик. Не расстраивайтесь!')
+    }
+  } else {
+    alert('Номер билета введен некорректно')
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    let figure = '';
+    let size = 10;
+
+    for (let i = 1; i <= size; i++) {
+      for (let j = size; j > 0; j--) {
+        if (i === 1 || i === size || j === i || j === (size - i + 1) || j === 1 || j === size) {
+          figure += '#';
+        } else {
+          figure += ' ';
+        }
+      }
+      figure += '\n';
+    }
+    console.log(figure);
+</script>
+</body>
+</html>

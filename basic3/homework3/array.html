@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    const arr = [
+      [2, 4, 6],
+      [1, 5, 10],
+      [7, 4, 1]
+    ];
+    let maxSumOfArrayIndex = 0, maxSumOfArray = getSumOfElements(arr[0]);
+
+    for (let i = 1; i < arr.length; i++) {
+      let sum = getSumOfElements(arr[i]);
+      if (sum > maxSumOfArray) {
+        maxSumOfArray = sum;
+        maxSumOfArrayIndex = i;
+      }
+    }
+
+    console.log(maxSumOfArrayIndex);
+
+    arr[maxSumOfArrayIndex].sort((a, b) => a - b);
+    console.log(arr[maxSumOfArrayIndex][0]);
+
+    /**
+     * Функция находит сумму элементов массива.
+     *
+     * @param {number[]} arr Массив, с которым будет работать функция.
+     * @returns {number} Вернет сумму элементов массива.
+     */
+    function getSumOfElements(arr) {
+      let number = 0;
+      for (let i = 0; i < arr.length; i++) {
+        number += arr[i];
+      }
+      return number;
+    }
+</script>
+</body>
+</html>

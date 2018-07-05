@@ -1,0 +1,29 @@
+<meta charset="UTF-8">
+<script>
+    let arr = [];
+    let rounds = 20;
+    let red = -1;
+    let black = 1;
+    let win = 0;
+    let now = 0;
+
+    for (let i = 0; i <= rounds; i++) {
+        arr.push(Math.floor(Math.random() * (black - red + 1) + red));
+    }
+
+    alert(arr);
+
+    for(i = 0; i < arr.length; i++) {
+        if (arr[i] === red) {
+            now++;
+        }
+        else {
+            if (now > win) {
+                win = now;
+            }
+            now = 0;
+        }
+    }
+
+    alert(win);
+</script>

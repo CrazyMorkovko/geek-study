@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Конвертер валют</title>
+</head>
+<body>
+    <script>
+        let sum = +prompt("Введите сумму в рублях:");
+        let euro = 71.0886977;
+        let dollar = 57.9038796;
+        let sumDollar = sum / dollar;
+        let sumEuro = sum / euro;
+
+        alert(sumDollar.toFixed(2) + " долларов \n " + sumEuro.toFixed(2) + " евро");
+    </script>
+</body>
+</html>

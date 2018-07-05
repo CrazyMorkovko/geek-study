@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    let enrollment = +prompt("Введите сумму, которую вы хотите положить на счет: ");
+
+    if (enrollment > 0) {
+      alert(`Ваша сумма в ${rubles(enrollment)} успешно зачислена.`);
+    } else {
+      alert("Введите верную сумму");
+    }
+
+    /**
+     * Функция склоняет слово в зависимости от введенного числа.
+     *
+     * @param {number} amount Число, с которым употребляется данное слово.
+     * @returns {string} Возвращает верное склонение слова.
+     */
+    function rubles(amount) {
+      let divide10 = amount % 10;
+      let divide100 = amount % 100;
+
+      if (divide10 === 1 && divide100 !== 11) {
+        return(`${amount} рубль`);
+      } else if ([2, 3, 4].includes(divide10) && ![12, 13, 14].includes(divide100)) {
+        return(`${amount} рубля`);
+      } else {
+        return(`${amount} рублей`);
+      }
+    }
+</script>
+</body>
+</html>

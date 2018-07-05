@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    let number = +prompt('Введите целое число от 0 до 999');
+
+    console.log(getNumberForObject(number));
+
+    /**
+     * Функция находит разряды, введенного числа.
+     *
+     * @param {number} number Число.
+     * @return {*} Вернет объект с разрядами числа, либо пустой объект, если введено неверное значение числа.
+     */
+    function getNumberForObject(number) {
+      if (Number.isInteger(number) && number >= 0 && number < 1000) {
+        let medium = Math.floor(number / 10);
+        return {
+          firstDigit: number % 10,
+          secondDigit: medium % 10,
+          thirdDigit: Math.floor(medium / 10)
+        };
+      }
+      console.error('Введите целое число от 0 до 999');
+      return {};
+    }
+</script>
+</body>
+</html>

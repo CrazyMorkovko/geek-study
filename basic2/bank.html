@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let a = parseInt(prompt("Сумма вклада"));
+        let b = parseInt(prompt("Процентная ставка"));
+
+        for (let n = 1; n <= 5; n++) {
+            a += a / 100 * b;
+            alert("Сумма вклада спустя " + n + " лет составит " + Math.floor(a) + " рублей");
+        }
+
+    </script>
+</body>
+</html>

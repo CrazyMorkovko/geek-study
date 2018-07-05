@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    let arr = [];
+
+    /**
+     * Функция генерирует случайное целое число в заданном диапазоне.
+     *
+     * @param {number} min Минимальное число диапазона
+     * @param {number} max Максимальное число диапазона
+     * @return {number} Вернет случайное число.
+     */
+    const mathRandom = (min, max) => Math.round(min - 0.5 + Math.random() * (max - min + 1));
+
+    for (let i = 0; i < 10; i++) {
+      arr.push(mathRandom(-10, 10));
+    }
+
+    console.log(arr);
+
+    /**
+     * Функция перебирает массив и находит в нем повторяющиеся элементы.
+     *
+     * @param {number} elem Значение элемента массива.
+     * @param {number} index Индекс элемента массива.
+     * @param {number[]} array Перебираемый массив.
+     * @return {boolean} Вернет правду, если элемент уникальный и ложь, если элемент повторяется.
+     */
+    const filterArray = (elem, index, array) => array.indexOf(elem) === index;
+
+    console.log(arr = arr.filter(filterArray));
+
+    while (arr.length < 10) {
+      let arg = mathRandom(-10, 10);
+      if (arr.findIndex(elem => elem === arg) === -1) {
+        arr.unshift(arg);
+      }
+    }
+
+    console.log(arr);
+
+    arr.sort(sortArray);
+
+    console.log(arr);
+
+    /**
+     *
+     *
+     * @param {number} arg1 Элемент массива для сравнения.
+     * @param {number} arg2 Элемент массива для сравнения.
+     * @return {number} Вернет отсортированный массив.
+     */
+    function sortArray(arg1, arg2) {
+      if (arg1 === 0) {
+        return -1;
+      }
+      if (arg2 === 0) {
+        return 1;
+      }
+      if (arg1 < 0 && arg2 < 0) {
+        return Math.abs(arg1) - Math.abs(arg2);
+      }
+      return arg1 - arg2;
+    }
+</script>
+</body>
+</html>
