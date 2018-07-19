@@ -2,13 +2,213 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Кто хочет стать миллионером?</title>
 </head>
 <body>
 <script>
     "use strict";
 
+    /**
+     * @type {object[]} Массив с объектами вопросов.
+     */
+    const questions = [
+      {
+        text: 'Мы и сами с ...',
+        variants: {
+          'a': 'волосами',
+          'b': 'усами',
+          'c': 'часами',
+          'd': 'долгами'
+        },
+        correctAnswerIndex: 'b'
+      },
+      {
+        text: 'Не откладывай на завтра то, что можно ...',
+        variants: {
+          'a': 'сделать сегодня',
+          'b': 'сделать послезавтра',
+          'c': 'сделать через месяц',
+          'd': 'никогда не делать'
+        },
+        correctAnswerIndex: 'a'
+      },
+      {
+        text: 'Кто стал героиней песни Максима Леонидова',
+        variants: {
+          'a': 'девочка-мираж',
+          'b': 'девочка-видение',
+          'c': 'девочка-привидение',
+          'd': 'девочка-галлюцинация'
+        },
+        correctAnswerIndex: 'b'
+      },
+      {
+        text: 'Как зовут сенбернара, героя популярного фильма?',
+        variants: {
+          'a': 'Бах',
+          'b': 'Сальери',
+          'c': 'Моцарт',
+          'd': 'Бетховен'
+        },
+        correctAnswerIndex: 'd'
+      },
+      {
+        text: 'Что написал Данте?',
+        variants: {
+          'a': 'Божественную трагедию',
+          'b': 'Божественную комедию',
+          'c': 'Божественную драму',
+          'd': 'Божественный фарс'
+        },
+        correctAnswerIndex: 'b'
+      }
+    ];
 
+    /**
+     * Объект с настройками игры.
+     *
+     * @property {questions} questions Массив с объектами вопросов.
+     * @property {int} scoreCount Счетчик правильных ответов.
+     * @property {int} questionIndex Индекс текущего вопроса.
+     */
+    const game = {
+      questions,
+      scoreCount: 0,
+      questionIndex: 0,
+
+      /**
+       * Инициализация игры.
+       */
+      init() {
+        this.scoreCount = 0;
+        this.questionIndex = 0;
+      },
+
+      /**
+       * Запуск игры.
+       */
+      run() {
+        this.init();
+        alert('Добро пожаловать в игру!');
+
+        while (true) {
+          const answer = this.getAnswer();
+
+          if (this.userWantExit(answer)) {
+            alert('До свидания.');
+            break;
+          }
+
+          if (this.isAnswerCorrect(answer)) {
+            alert('Правильный ответ!');
+            this.scoreCount++;
+          } else {
+            alert('Вы ошиблись!');
+            alert(`Количество правильных ответов: ${this.scoreCount}.`);
+
+            if (!confirm('Сыграем снова?')) {
+              break;
+            }
+
+            this.init();
+          }
+
+          this.questionIndex++;
+
+          if (this.isGameOver()) {
+            alert(`Количество правильных ответов: ${this.scoreCount}.`);
+
+            if (!confirm('Сыграем снова?')) {
+              break;
+            }
+
+            this.init();
+          }
+        }
+      },
+
+      /**
+       * Получаем ответ от пользователя.
+       *
+       * @returns {string} Строка ответа пользователя.
+       */
+      getAnswer() {
+        while (true) {
+          let answer = prompt(this.getCurrentQuestionString().toLowerCase());
+
+          if (answer === null) {
+            alert('Если вы не хотите играть, введите 1.');
+            continue;
+          }
+
+          if (this.validateAnswer(answer)) {
+            alert('Выберите один из вариантов ответа.');
+            continue;
+          }
+
+          return answer;
+        }
+      },
+
+      /**
+       * Возвращает строку с текущим вопросом и вариантами ответов.
+       *
+       * @returns {string} Строка с текущим вопросом и вариантами ответов.
+       */
+      getCurrentQuestionString() {
+        const question = this.questions[this.questionIndex];
+
+        let questionString = `Вопрос: ${question.text} \n Варианты ответов: \n`;
+        for (const key in question.variants) {
+          if (question.variants.hasOwnProperty(key)) {
+            questionString += `${key} - ${question.variants[key]} \n`;
+          }
+        }
+
+        return questionString;
+      },
+
+      /**
+       * Проверяем ответ пользователя на корректность ввода.
+       *
+       * @param {string} userAnswer Ответ пользователя.
+       * @returns {boolean} true, если пользователь ввёл корректные данные, иначе false.
+       */
+      validateAnswer(userAnswer) {
+        return ['1', 'a', 'b', 'c', 'd'].indexOf(userAnswer) === -1;
+      },
+
+      /**
+       * Проверяет ввёл ли пользователь вместо ответа информацию для выхода из игры.
+       *
+       * @param {string} userAnswer Ответ пользователя.
+       * @returns {boolean} true, если пользователь хочет выйти, false, если нет.
+       */
+      userWantExit(userAnswer) {
+        return userAnswer === '1';
+      },
+
+      /**
+       * Проверяет является ли ответ, переданный в функцию верным.
+       *
+       * @param {string} userAnswer Ответ пользователя.
+       * @returns {boolean} true, если ответ пользователя верный, false, если нет.
+       */
+      isAnswerCorrect(userAnswer) {
+        return this.questions[this.questionIndex].correctAnswerIndex === userAnswer;
+      },
+
+      /**
+       * Проверяет закончилась ли игра.
+       *
+       * @returns {boolean} true, если было задано 5 вопросов, иначе false.
+       */
+      isGameOver() {
+        return this.questionIndex > questions.length;
+      }
+    };
+
+    game.run();
 </script>
 </body>
 </html>
