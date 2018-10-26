@@ -141,7 +141,7 @@
             continue;
           }
 
-          if (this.validateAnswer(answer)) {
+          if (!this.validateAnswer(answer)) {
             alert('Выберите один из вариантов ответа.');
             continue;
           }
@@ -175,7 +175,7 @@
        * @returns {boolean} true, если пользователь ввёл корректные данные, иначе false.
        */
       validateAnswer(userAnswer) {
-        return ['1', 'a', 'b', 'c', 'd'].indexOf(userAnswer) === -1;
+        return ['1', 'a', 'b', 'c', 'd'].indexOf(userAnswer) !== -1;
       },
 
       /**
@@ -204,7 +204,7 @@
        * @returns {boolean} true, если было задано 5 вопросов, иначе false.
        */
       isGameOver() {
-        return this.questionIndex > questions.length;
+        return this.questionIndex >= questions.length;
       }
     };
 

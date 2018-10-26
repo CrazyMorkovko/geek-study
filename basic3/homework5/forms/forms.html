@@ -3,8 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="formsStyle.css">
 </head>
 <body>
+<form id="form">
+    <div>
+        <input name="name" placeholder="Имя">
+        <div class="error errorName"></div>
+    </div>
+    <div>
+        <input name="phone" placeholder="Телефон">
+        <div class="error errorPhone"></div>
+    </div>
+    <div>
+        <input name="password" placeholder="Пароль" type="password">
+        <div class="error errorPassword"></div>
+    </div>
+    <div>
+        <input name="password_confirmation" placeholder="Повтор пароля" type="password">
+        <div class="error errorPasswordConfirmation"></div>
+    </div>
+    <div>
+        <button>Отправить форму</button>
+    </div>
+</form>
 
+<script src="formsScripts.js"></script>
 </body>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+<div id="container">
+    <div>
+        <img src="img/pencil.jpg" alt="Карандаш">
+        Цена: 15 руб
+        <button class="btn" data-price="15" data-name="Карандаш">Купить</button>
+    </div>
+    <div>
+        <img src="img/mouse.jpg" alt="Мышь компьютерная">
+        Цена: 250 руб
+        <button class="btn" data-price="250" data-name="Мышь">Купить</button>
+    </div>
+    <div>
+        <img src="img/keyboard.jpeg" alt="Клавиатура">
+        Цена: 350 руб
+        <button class="btn" data-price="350" data-name="Клавиатура">Купить</button>
+    </div>
+</div>
+<div id="cart">
+    Количество товаров: <span id="count">0</span>
+    Итого: <span id="price">0</span>
+</div>
+
+<script src="cart.js"></script>
+</body>
+</html>
